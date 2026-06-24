@@ -7,16 +7,15 @@ class SliderScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sliderValue = ref.watch(sliderProvider);
     final viewModel = ref.read(sliderViewModel);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('Slider Value: $sliderValue'),
           Consumer(
             builder: (context, ref, child) {
+              final sliderValue = ref.watch(sliderProvider);
               print('container with slider value');
               return Container(
                 height: 200,
@@ -27,7 +26,10 @@ class SliderScreen extends ConsumerWidget {
           ),
           Consumer(
             builder: (context, ref, child) {
-              print('slider value');
+              final sliderValue = ref.watch(
+                sliderProvider.select((value) => value),
+              );
+              print('slider ');
               return Slider(
                 value: sliderValue,
                 onChanged: (value) {
