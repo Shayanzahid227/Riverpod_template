@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/home_screen.dart';
+import 'package:riverpod_practice/counter/counter_screen.dart';
+import 'package:riverpod_practice/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,13 +29,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // providerScop manage all the provider state in whole application
     return ProviderScope(
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: HomeScreen(),
+        home: CounterScreen(),
       ),
     );
   }
