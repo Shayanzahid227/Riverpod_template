@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_practice/counter/counter_screen.dart';
 import 'package:riverpod_practice/home/home_screen.dart';
+import 'package:riverpod_practice/rough/r1.v.dart';
+import 'package:riverpod_practice/rough/r2_screen.dart';
 import 'package:riverpod_practice/slider/slider_screen.dart';
 
 void main() {
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: SliderScreen(),
+        home: R2Screen(),
       ),
     );
   }
