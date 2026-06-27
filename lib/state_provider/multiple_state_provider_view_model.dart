@@ -4,10 +4,12 @@ import 'package:flutter_riverpod/legacy.dart';
 final nameProvider = StateProvider<String>((ref) => 'shayan');
 final ageProvider = StateProvider<String>((ref) => '21');
 
-final viewmodelProvider = Provider((ref) => R2ViewModel(ref));
+final multipleStateProviderViewModelProvider = Provider(
+  (ref) => MultipleStateProviderViewModel(ref),
+);
 
-class R2ViewModel {
-  R2ViewModel(this.ref);
+class MultipleStateProviderViewModel {
+  MultipleStateProviderViewModel(this.ref);
 
   final Ref ref;
 

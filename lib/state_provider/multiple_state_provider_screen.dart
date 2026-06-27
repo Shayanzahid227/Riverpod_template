@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/rough/r2_view_model.dart';
+import 'package:riverpod_practice/state_provider/multiple_state_provider_view_model.dart';
 
-class R2Screen extends ConsumerWidget {
-  const R2Screen({super.key});
+class MultipleStateProviderScreen extends ConsumerWidget {
+  const MultipleStateProviderScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.read(viewmodelProvider);
+    final viewModel = ref.read(multipleStateProviderViewModelProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text("R2 Screen")),
+      appBar: AppBar(title: const Text("multiple state provider Screen")),
       body: Column(
         children: [
           SizedBox(height: 200),
