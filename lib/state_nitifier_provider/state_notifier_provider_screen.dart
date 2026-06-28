@@ -40,8 +40,8 @@ class StateNotifierProviderScreen extends ConsumerWidget {
                   onChanged: (vlaue) {
                     vm.displayText(vlaue);
                     // this is another way to update the state but to avoid not a good approach
-                    // ref
-                    //     .read(stateNotifierProviderViewModelProvider.notifier)
+                    //
+                    //  ref   .read(stateNotifierProviderViewModelProvider.notifier)
                     //     .displayText(vlaue);
                   },
                 ),
@@ -79,3 +79,4 @@ class StateNotifierProviderScreen extends ConsumerWidget {
     );
   }
 }
+// not final yet this screen and logics
