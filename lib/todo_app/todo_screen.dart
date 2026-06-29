@@ -10,11 +10,10 @@ class TodoScreen extends ConsumerWidget {
     final item=ref.watch(itemViewModelProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todo App'),
+        title:  Text('Items length: ${item.length}'),
       ),
       body: Scaffold(body: item.isEmpty? Center(child: Text('no data found')):
       ListView.builder(
-        
         
         itemCount:item.length,
         scrollDirection: Axis.vertical,
@@ -28,7 +27,7 @@ class TodoScreen extends ConsumerWidget {
           children: [
             IconButton(
               onPressed: () {
-                ref.read(itemViewModelProvider.notifier).updateItemInList(item[index].id, 'updated item');
+                ref.read(itemViewModelProvider.notifier).updateItemInList(item[index].id, 'updated item ');
               },
               icon: const Icon(Icons.edit),
             ),
@@ -51,7 +50,8 @@ class TodoScreen extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(itemViewModelProvider.notifier).addItemToList('item');
+         final count = ref.read(itemViewModelProvider).length;
+          ref.read(itemViewModelProvider.notifier).addItemToList('item ${count + 1}');
         },
         child: const Icon(Icons.add),
       ),

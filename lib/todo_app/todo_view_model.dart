@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/legacy.dart';
+import 'package:riverpod_practice/counter/counter_view_model.dart';
 import 'package:riverpod_practice/todo_app/todo_model.dart';
 final itemViewModelProvider= StateNotifierProvider<ItemViewModel, List<Item>>((ref) {
   return ItemViewModel();
@@ -12,7 +13,7 @@ class ItemViewModel extends StateNotifier<List<Item>> {
 void addItemToList(String name){
   final item = Item(id: DateTime.now().toIso8601String(), name: name);
   state.add(item);
-  state = state.toList();
+  state = state.toList();// this line notifi riverPod that stae chnage are rebuild UI
 }
 ///
 /// delete item from the list
@@ -30,4 +31,8 @@ void deleteItemFromList(String id){
       state[index] = state[index].copyWith(name: name);
       state = state.toList();
     }
+    ///
+    ///
+    ///
+   
   }}
