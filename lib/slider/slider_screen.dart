@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_practice/slider/slider_view_model.dart';
 
 class SliderScreen extends ConsumerWidget {
-  SliderScreen({super.key});
+  const SliderScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

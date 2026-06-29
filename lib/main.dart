@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_practice/state_nitifier_provider/state_notifier_provider_screen.dart';
-import 'package:riverpod_practice/state_provider/multiple_state_provider_screen.dart';
+import 'package:riverpod_practice/todo_app/todo_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: StateNotifierProviderScreen(),
+        home: const TodoScreen(),
       ),
     );
   }
