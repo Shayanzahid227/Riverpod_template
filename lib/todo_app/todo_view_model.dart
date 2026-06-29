@@ -19,14 +19,14 @@ void addItemToList(String name){
 /// delete item from the list
 ///
 void deleteItemFromList(String id){
-  state.removeWhere((item) => item.id == id);
+  state.removeWhere((stateItem) => stateItem.id == id);
   state = state.toList();
   
 }///
   /// update item in the list
   ///
   void updateItemInList(String id, String name){
-    final index = state.indexWhere((item) => item.id == id);
+    final index = state.indexWhere((stateItem) => stateItem.id == id);
     if (index != -1) {
       state[index] = state[index].copyWith(name: name);
       state = state.toList();
