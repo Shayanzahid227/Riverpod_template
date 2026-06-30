@@ -9,15 +9,17 @@ final itemViewModelProvider = StateNotifierProvider<ItemViewModel, List<Item>>((
 
 class ItemViewModel extends StateNotifier<List<Item>> {
   ItemViewModel() : super([]);
-///
+
+  ///
   /// Add an item to the list if the `name` is unique.
   /// Returns `true` when added, `false` when a duplicate name exists.
-  /// 
-  bool addItemToList(String name) {
-    // trim use for to remove empty spaces 
-    final trimmed = name.trim();
+  ///
+  bool addItemToList(String itemName) {
+    // trim use for to remove empty spaces
+    final trimmed = itemName.trim();
     if (trimmed.isEmpty) return false;
-///
+
+    ///
     // Enforce uniqueness (case-insensitive)
     // it check is their is any item in the list that has the same name (case-insensitive) as the new item being added.
     ///
@@ -26,7 +28,7 @@ class ItemViewModel extends StateNotifier<List<Item>> {
     );
     if (exists) return false;
 
-     final item = Item(id: DateTime.now().toIso8601String(), name: trimmed);
+    final item = Item(id: DateTime.now().toIso8601String(), name: trimmed, isFavourite: false);
     // final item = Item(id: DateTime.now().toIso8601String(), name: name);
     state.add(item);
     state = state.toList(); // notify Riverpod about the change
@@ -58,3 +60,4 @@ class ItemViewModel extends StateNotifier<List<Item>> {
     ///
   }
 }
+ 
