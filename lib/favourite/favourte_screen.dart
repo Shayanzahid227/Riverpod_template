@@ -14,21 +14,21 @@ class FavourteScreen extends ConsumerWidget {
       appBar: AppBar(title: const Text('Favourite Screen')),
       body: Column(
         children: [
-
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Search',
               border: OutlineInputBorder(),
             ),
             onChanged: (value) {
-              ref.read(favouriteStateProvider.notifier).state =
-                  vm.copyWith(searchWord: value);
+              ref.read(favouriteStateProvider.notifier).state = vm.copyWith(
+                searchWord: value,
+              );
             },
           ),
           vm.allItems.isEmpty
               ? const Center(child: Text('No items found'))
-              : Expanded (
-                child: ListView.builder(
+              : Expanded(
+                  child: ListView.builder(
                     itemCount: vm.allItems.length,
                     itemBuilder: (context, index) {
                       final item = vm
@@ -41,7 +41,7 @@ class FavourteScreen extends ConsumerWidget {
                             vm.allItems[index].isFavourite
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-                      
+
                             color: item.isFavourite ? Colors.red : null,
                           ),
                           onPressed: () {},
@@ -49,7 +49,7 @@ class FavourteScreen extends ConsumerWidget {
                       );
                     },
                   ),
-              ),
+                ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -61,3 +61,4 @@ class FavourteScreen extends ConsumerWidget {
     );
   }
 }
+// not completed yet
