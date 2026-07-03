@@ -11,7 +11,7 @@ class FavourteScreen extends ConsumerWidget {
 
     final vm = ref.watch(favouriteStateProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Favourite Screen')),
+      appBar: AppBar(title: const Text('search Screen')),
       body: Column(
         children: [
           TextFormField(
@@ -20,28 +20,24 @@ class FavourteScreen extends ConsumerWidget {
               border: OutlineInputBorder(),
             ),
             onChanged: (value) {
-              ref.read(favouriteStateProvider.notifier).state = vm.copyWith(
-                searchWord: value,
-              );
+            ref.read(favouriteStateProvider.notifier).searchItems(value);
             },
           ),
           vm.allItems.isEmpty
               ? const Center(child: Text('No items found'))
               : Expanded(
                   child: ListView.builder(
-                    itemCount: vm.allItems.length,
+                    itemCount: vm.filterItems.length,
                     itemBuilder: (context, index) {
-                      final item = vm
-                          .allItems[index]; // individuall acces to all items in the list
+                      final item = vm.filterItems[index];
                       return ListTile(
                         title: Text(item.name),
                         subtitle: Text('ID: ${item.id}'),
                         trailing: IconButton(
                           icon: Icon(
-                            vm.allItems[index].isFavourite
+                            item.isFavourite
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-
                             color: item.isFavourite ? Colors.red : null,
                           ),
                           onPressed: () {},

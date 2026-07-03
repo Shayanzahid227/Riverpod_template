@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/favourite/favourite_view_model.dart';
 import 'package:riverpod_practice/favourite/favourte_screen.dart';
-import 'package:riverpod_practice/todo_app/todo_screen.dart';
 
 void main() {
   runApp(const MyApp());
