@@ -31,6 +31,9 @@ class FavouriteViewModel extends StateNotifier<FavouriteState> {
   void searchItems(String searchWord) {
     state = state.copyWith(filteredItems: _filterItems(state.allItems, searchWord));
   }
+  ///
+  ///. filter function to filter the items based on the search word
+  ///
 List<Item> _filterItems(List<Item> items, String searchWord) {
     if (searchWord.isEmpty) {
       return items;
@@ -40,6 +43,19 @@ List<Item> _filterItems(List<Item> items, String searchWord) {
           .toList();
     }
   }
+  ///
+  /// add item to favourite list
+  ///
+  void addToFavourite(Item item) {
+    final updatedItem = item.copyWith(isFavourite: true);
+    final updatedAllItems = state.allItems.map((i) => i.id == item.id ? updatedItem : i).toList();
+    final updatedFavouriteItems = List<Item>.from(state.favouriteItems)..add(updatedItem);
+
+    state = state.copyWith(
+      allItems: updatedAllItems,
+      favouriteItems: updatedFavouriteItems,
+    );
+  }
 }
  
 ///
@@ -47,25 +63,27 @@ List<Item> _filterItems(List<Item> items, String searchWord) {
 ///
 class FavouriteState {
   final String searchWord; // for searching among al items
-  final List<Item>
-  filterItems; //on pressing the favourite button it will add the item to this list
+  final List<Item> filterItems; //on pressing the favourite button it will add the item to this list
   final List<Item> allItems; // all items
-
+final List<Item> favouriteItems; // all items which are marked as favourite
   FavouriteState({
     required this.searchWord,
     required this.filterItems,
     required this.allItems,
+    this.favouriteItems = const [],
   });
 
   FavouriteState copyWith({
     String? searchWord,
     List<Item>? filteredItems,
     List<Item>? allItems,
+    List<Item>? favouriteItems,
   }) {
     return FavouriteState(
       searchWord: searchWord ?? this.searchWord,
-      filterItems: filteredItems ?? this.filterItems,
+      filterItems: filteredItems ?? filterItems,
       allItems: allItems ?? this.allItems,
+      favouriteItems: favouriteItems ?? this.favouriteItems,
     );
   }
 }
