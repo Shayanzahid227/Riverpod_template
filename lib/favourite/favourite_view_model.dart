@@ -21,33 +21,42 @@ class FavouriteViewModel extends StateNotifier<FavouriteState> {
       Item(id: '6', name: 'App developer', isFavourite: true),
     ];
 
-    state = state.copyWith(allItems: items.toList(),filteredItems: items.toList());
-     
+    state = state.copyWith(
+      allItems: items.toList(),
+      filteredItems: items.toList(),
+    );
   }
 
   ///
   ///. search function to search among all the items
   ///
   void searchItems(String searchWord) {
-    state = state.copyWith(filteredItems: _filterItems(state.allItems, searchWord));
+    state = state.copyWith(
+      filteredItems: _filterItems(state.allItems, searchWord),
+    );
   }
+
   ///
   ///. filter function to filter the items based on the search word
   ///
-List<Item> _filterItems(List<Item> items, String searchWord) {
+  List<Item> _filterItems(List<Item> items, String searchWord) {
     if (searchWord.isEmpty) {
       return items;
     } else {
       return items
-          .where((item) => item.name.toLowerCase().contains(searchWord.toLowerCase()))
+          .where(
+            (item) =>
+                item.name.toLowerCase().contains(searchWord.toLowerCase()),
+          )
           .toList();
     }
   }
+
   ///
-  /// 
+  ///
   ///
 }
- 
+
 ///
 ///. staets to which will deal during the favourite screen
 ///
@@ -56,12 +65,12 @@ class FavouriteState {
   final List<Item>
   filterItems; //on pressing the favourite button it will add the item to this list
   final List<Item> allItems; // all items
-//final List<Item> favouriteItems; // all items which are marked as favourite
+  //final List<Item> favouriteItems; // all items which are marked as favourite
   FavouriteState({
     required this.searchWord,
     required this.filterItems,
     required this.allItems,
-   // this.favouriteItems = const [],
+    // this.favouriteItems = const [],
   });
 
   FavouriteState copyWith({
@@ -74,7 +83,6 @@ class FavouriteState {
       searchWord: searchWord ?? this.searchWord,
       filterItems: filteredItems ?? filterItems,
       allItems: allItems ?? this.allItems,
-     // favouriteItems: favouriteItems ?? this.favouriteItems,
     );
   }
 }
